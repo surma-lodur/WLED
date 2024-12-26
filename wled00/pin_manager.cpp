@@ -200,7 +200,7 @@ bool PinManager::isPinOk(byte gpio, bool output)
     #if ARDUINO_USB_CDC_ON_BOOT == 1 || ARDUINO_USB_DFU_ON_BOOT == 1
     if (gpio > 18 && gpio < 21) return false;     // 19 + 20 = USB-JTAG. Not recommended for other uses.
     #endif
-    if (gpio > 21 && gpio < 33) return false;     // 22 to 32: not connected + SPI FLASH
+    if (gpio > 21 && gpio < 32) return false;     // 22 to 32: not connected + SPI FLASH
     #if CONFIG_ESPTOOLPY_FLASHMODE_OPI            // 33-37: never available if using _octal_ Flash (opi_opi)
     if (gpio > 32 && gpio < 38) return false;
     #endif
@@ -210,7 +210,7 @@ bool PinManager::isPinOk(byte gpio, bool output)
     // 38 to 48 are for general use. Be careful about straping pins GPIO45 and GPIO46 - these may be pull-up or pulled-down on your board.
   #elif defined(CONFIG_IDF_TARGET_ESP32S2)
     // strapping pins: 0, 45 & 46
-    if (gpio > 21 && gpio < 33) return false;     // 22 to 32: not connected + SPI FLASH
+    if (gpio > 21 && gpio < 32) return false;     // 22 to 32: not connected + SPI FLASH
     // JTAG: GPIO39-42 are usually used for inline debugging
     // GPIO46 is input only and pulled down
   #else
